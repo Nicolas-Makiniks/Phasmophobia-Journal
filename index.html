@@ -51,18 +51,12 @@
             }
             
             /* Aqui estou tratando do layout como se fosse uma tabela interativa, as ações serão feitas em JS */
-            #borderTop {
-                border-top: 3px solid black;
-            }
-
-            #borderBottom {
-                border-bottom: 3px solid black;
-            }
-            
             .evidencias ul {
                 list-style: none;
                 column-gap: 20px;
                 column-count: 2;
+                border-bottom: 3px solid black;
+                border-top: 3px solid black;
             }
 
             .fantasmas ul {
@@ -72,11 +66,11 @@
             }
 
             .evidencias ul li, .fantasmas ul li {
-                background-color: bisque;
                 padding: 10px 0px 10px 10px;
                 break-inside: avoid;
                 margin-bottom: 5px;
                 text-align: left;
+                border-radius: 100px;
             }
             
             /* Aqui estou tratando do layout dos resultados conforme a seleção da tabela acima */
@@ -86,8 +80,38 @@
                 text-align: center;
                 padding-top: 10px;
             }
+
+
         }
     </style>
+    <script>
+        let evidencias = [0, 0, 0, 0, 0, 0, 0] //Representação numérica de EMF, UV, ESCRITA, TEMP, DOTS e ORB em que 0 é padrão, 1 é válido e 2 inválido para ter 3 comportamentos
+        let fantasmas = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] //Representação numérica dos fantasmas listados
+
+        function getTypeAction(btn) {
+            let selectedButton = btn
+            
+            if (selectedButton.className === "Evidence") {
+
+                if (evidencias[selectedButton.id] === 0) {
+                    evidencias[selectedButton.id] = 1
+                    selectedButton.style.border = '3px solid black'
+                } else if (evidencias[selectedButton.id] === 1) {
+                    evidencias[selectedButton.id] = 2
+                    selectedButton.style.textDecoration = 'line-through'
+                    selectedButton.style.border = ''
+                } else {
+                    evidencias[selectedButton.id] = 0
+                    selectedButton.style = ''
+                }
+            } else if (selectedButton.className === 'Ghost') {
+                console.log('é ghost')
+                if (fantasmas[selectedButton.id] === 0) {
+                    fantas
+                }
+            }
+        }
+    </script>
 </head>
 <body>
     <main>
@@ -95,45 +119,43 @@
         <section class="secaoDireita">
             <section class="evidencias">
                 <h2>Evidências</h2>
-                <ul id="borderTop">
-                    <li id="EMF">EMF Nível 5</li>
-                    <li id="UV">Ultravioleta</li>
-                    <li id="ESCRITA">Escrita Fantasma</li>
-                    <li id="DOTS">Projetor D.O.T.S.</li>
-                    <li id="ORB">Orbe Espectral</li>
-                    <li id="SPIRIT">Spirit Box</li>
-                </ul>
-                <ul id="borderBottom">
-                    <li id="TEMP">Temperaturas Congelantes</li>
+                <ul>
+                    <li id="0" class="Evidence" onclick="getTypeAction(this)">EMF Nível 5</li>
+                    <li id="1" class="Evidence" onclick="getTypeAction(this)">Ultravioleta</li>
+                    <li id="2" class="Evidence" onclick="getTypeAction(this)">Escrita Fantasma</li>
+                    <li id="3" class="Evidence" onclick="getTypeAction(this)">Temperaturas Congelantes</li>
+                    <li id="4" class="Evidence" onclick="getTypeAction(this)">Projetor D.O.T.S.</li>
+                    <li id="5" class="Evidence" onclick="getTypeAction(this)">Orbe Espectral</li>
+                    <li id="6" class="Evidence" onclick="getTypeAction(this)">Spirit Box</li>
                 </ul>
             </section>
             <section class="fantasmas">
                 <h3>Com as evidências que encontramos, acreditamos que o fantasma é</h3>
                 <ul>
-                    <li>Espírito</li>
-                    <li>Poltergeist</li>
-                    <li>Mare</li>
-                    <li>Demônio</li>
-                    <li>Yokai</li>
-                    <li>Myling</li>
-                    <li>Raiju</li>
-                    <li>Moroi</li>
-                    <li>Espectro</li>
-                    <li>Banshee</li>
-                    <li>Revenant</li>
-                    <li>Yurei</li>
-                    <li>Hantu</li>
-                    <li>Onryo</li>
-                    <li>Obake</li>
-                    <li>Deogen</li>
-                    <li>Aparição</li>
-                    <li>Jinn</li>
-                    <li>Sombra</li>
-                    <li>Oni</li>
-                    <li>Goryo</li>
-                    <li>Gêmeos</li>
-                    <li>Mímico</li>
-                    <li>Thaye</li>
+                    <li id="0" class="Ghost" onclick="getTypeAction(this)">Espírito</li>
+                    <li id="1" class="Ghost" onclick="getTypeAction(this)">Poltergeist</li>
+                    <li id="2" class="Ghost" onclick="getTypeAction(this)">Mare</li>
+                    <li id="3" class="Ghost" onclick="getTypeAction(this)">Demônio</li>
+                    <li id="4" class="Ghost" onclick="getTypeAction(this)">Yokai</li>
+                    <li id="5" class="Ghost" onclick="getTypeAction(this)">Myling</li>
+                    <li id="6" class="Ghost" onclick="getTypeAction(this)">Raiju</li>
+                    <li id="7" class="Ghost" onclick="getTypeAction(this)">Moroi</li>
+                    <li id="8" class="Ghost" onclick="getTypeAction(this)">Espectro</li>
+                    <li id="9" class="Ghost" onclick="getTypeAction(this)">Banshee</li>
+                    <li id="10" class="Ghost" onclick="getTypeAction(this)">Revenant</li>
+                    <li id="11" class="Ghost" onclick="getTypeAction(this)">Yurei</li>
+                    <li id="12" class="Ghost" onclick="getTypeAction(this)">Hantu</li>
+                    <li id="13" class="Ghost" onclick="getTypeAction(this)">Onryo</li>
+                    <li id="14" class="Ghost" onclick="getTypeAction(this)">Obake</li>
+                    <li id="15" class="Ghost" onclick="getTypeAction(this)">Deogen</li>
+                    <li id="16" class="Ghost" onclick="getTypeAction(this)">Aparição</li>
+                    <li id="17" class="Ghost" onclick="getTypeAction(this)">Jinn</li>
+                    <li id="18" class="Ghost" onclick="getTypeAction(this)">Sombra</li>
+                    <li id="19" class="Ghost" onclick="getTypeAction(this)">Oni</li>
+                    <li id="20" class="Ghost" onclick="getTypeAction(this)">Goryo</li>
+                    <li id="21" class="Ghost" onclick="getTypeAction(this)">Gêmeos</li>
+                    <li id="22" class="Ghost" onclick="getTypeAction(this)">Mímico</li>
+                    <li id="23" class="Ghost" onclick="getTypeAction(this)">Thaye</li>
                 </ul>
             </section>
         </section>
