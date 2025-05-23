@@ -11,6 +11,7 @@
             padding: 0;
             box-sizing: border-box;
             font-size: clamp(16px, 2vw, 0); /* para definir o tamanho da fonte de forma responsiva */
+            font-family: "Winky Sans", sans-serif;
         }
 
         
@@ -50,24 +51,39 @@
             }
             
             /* Aqui estou tratando do layout como se fosse uma tabela interativa, as ações serão feitas em JS */
+            #borderTop {
+                border-top: 3px solid black;
+            }
+
+            #borderBottom {
+                border-bottom: 3px solid black;
+            }
+            
             .evidencias ul {
                 list-style: none;
                 column-gap: 20px;
                 column-count: 2;
             }
 
-            .evidencias ul li {
-                background-color: antiquewhite;
-                border: 1px solid blue;
+            .fantasmas ul {
+                list-style: none;
+                column-gap: 20px;
+                column-count: 3;
+            }
+
+            .evidencias ul li, .fantasmas ul li {
+                background-color: bisque;
                 padding: 10px 0px 10px 10px;
                 break-inside: avoid;
                 margin-bottom: 5px;
             }
             
+            /* Aqui estou tratando do layout dos resultados conforme a seleção da tabela acima */
             .fantasmas {
                 background-color: lightgreen;
                 flex-grow: 1;
                 text-align: center;
+                padding-top: 10px;
             }
         }
     </style>
@@ -78,20 +94,46 @@
         <section class="secaoDireita">
             <section class="evidencias">
                 <h2>Evidências</h2>
-                <ul>
+                <ul id="borderTop">
                     <li id="EMF">EMF Nível 5</li>
-                    <li id="UV">Impressões Digitais</li>
+                    <li id="UV">Ultravioleta</li>
                     <li id="ESCRITA">Escrita Fantasma</li>
-                    <li id="DOTS">Projeção D.O.T.S.</li>
-                    <li id="ORB">Orbe Fantasma</li>
+                    <li id="DOTS">Projetor D.O.T.S.</li>
+                    <li id="ORB">Orbe Espectral</li>
                     <li id="SPIRIT">Spirit Box</li>
                 </ul>
-                <ul>
-                    <li id="TEMP">Temperatura Baixa</li>
+                <ul id="borderBottom">
+                    <li id="TEMP">Temperaturas Congelantes</li>
                 </ul>
             </section>
             <section class="fantasmas">
                 <h3>Com as evidências que encontramos, acreditamos que o fantasma é</h3>
+                <ul>
+                    <li>Espírito</li>
+                    <li>Poltergeist</li>
+                    <li>Mare</li>
+                    <li>Demônio</li>
+                    <li>Yokai</li>
+                    <li>Myling</li>
+                    <li>Raiju</li>
+                    <li>Moroi</li>
+                    <li>Espectro</li>
+                    <li>Banshee</li>
+                    <li>Revenant</li>
+                    <li>Yurei</li>
+                    <li>Hantu</li>
+                    <li>Onryo</li>
+                    <li>Obake</li>
+                    <li>Deogen</li>
+                    <li>Aparição</li>
+                    <li>Jinn</li>
+                    <li>Sombra</li>
+                    <li>Oni</li>
+                    <li>Goryo</li>
+                    <li>Gêmeos</li>
+                    <li>Mímico</li>
+                    <li>Thaye</li>
+                </ul>
             </section>
         </section>
     </main>
