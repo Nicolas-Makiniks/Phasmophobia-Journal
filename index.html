@@ -10,53 +10,58 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-size: clamp(16px, 2vw, 32px); /* para definir o tamanho da fonte de forma responsiva */
         }
 
+        
         body {
-            font-size: clamp(16px, 2vw, 32px);
+            background-color: #efefef;
         }
+        
+        
+        
+        /* Definindo um layout específico para mobile
+        Tudo a partir deste ponto é definido apenas para mobile */
+        @media (max-width: 768px) {
+            main {
+                display: flex;
+                height: 100vh;
+            }
 
-        main {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            position: absolute;
-            display: flex;
-            width: min(80vw, 90vw);
-            aspect-ratio: 16/9;
-            background-color: black;
+            /* Seção da Esquerda */
+            .secaoEsquerda {
+                width: 100px;
+                background-color: black;
+            }
+
+            /* Seção da Direita */
+            .secaoDireita {
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                background-color: blueviolet;
+                overflow: hidden;
+            }
+            
+            /* Componentes da Direita */
+            .evidencias {
+                background-color: lightblue;
+                height: 350px;
+            }
+            
+            .fantasmas {
+                background-color: lightgreen;
+                flex-grow: 1;
+            }
         }
-
-        .left {
-            flex: 1;
-            background-color: lightcoral;
-        }
-
-        .right {
-            flex: 1;
-            background-color: bisque;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .evidencias {
-            flex: 0 0 40%;
-            background-color: lightblue;
-        }
-
-        .fantasmas {
-            flex: 0 0 60%;
-            background-color: lightgreen;
-        }
-
     </style>
 </head>
 <body>
     <main>
-        <section class="left"></section>
-        <section class="right">
-            <section class="evidencias">aaaaaaaaaaaaaaaaaaaaaaaaaaa</section>
-            <section class="fantasmas"></section>
+        <section class="secaoEsquerda"></section>
+        <section class="secaoDireita">
+            <section class="evidencias">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</section>
+            <section class="fantasmas">ssss</section>
         </section>
     </main>
 </body>
