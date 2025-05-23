@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-size: clamp(16px, 2vw, 32px); /* para definir o tamanho da fonte de forma responsiva */
+            font-size: clamp(32px, 2vw, 32px); /* para definir o tamanho da fonte de forma responsiva */
         }
 
         
@@ -31,7 +31,7 @@
             /* Seção da Esquerda */
             .secaoEsquerda {
                 width: 100px;
-                background-color: black;
+                background-color: lightcoral;
             }
 
             /* Seção da Direita */
@@ -41,17 +41,33 @@
                 flex-grow: 1;
                 background-color: blueviolet;
                 overflow: hidden;
+                padding: 10px;
             }
             
             /* Componentes da Direita */
             .evidencias {
                 background-color: lightblue;
+            }
+            
+            .evidencias ul {
+                border-top: 3px solid black;
+                border-bottom: 3px solid black;
                 height: 350px;
+                list-style: none;
+                column-gap: 20px;
+                column-count: 2;
+            }
+
+            .evidencias ul li {
+                background-color: antiquewhite;
+                border: 1px solid blue;
+                padding: 20px;
             }
             
             .fantasmas {
                 background-color: lightgreen;
                 flex-grow: 1;
+                text-align: center;
             }
         }
     </style>
@@ -60,8 +76,21 @@
     <main>
         <section class="secaoEsquerda"></section>
         <section class="secaoDireita">
-            <section class="evidencias">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</section>
-            <section class="fantasmas">ssss</section>
+            <section class="evidencias">
+                <h2>Evidências</h2>
+                <ul>
+                    <li id="EMF">EMF Nível 5</li>
+                    <li id="UV">Impressões Digitais</li>
+                    <li id="ESCRITA">Escrita Fantasma</li>
+                    <li id="TEMP">Temperatura Baixa</li>
+                    <li id="DOTS">Projeção D.O.T.S.</li>
+                    <li id="ORB">Orbe Fantasma</li>
+                    <li id="SPIRIT">Spirit Box</li>
+                </ul>
+            </section>
+            <section class="fantasmas">
+                <h3>Com as evidências que encontramos, acreditamos que o fantasma é</h3>
+            </section>
         </section>
     </main>
 </body>
