@@ -85,26 +85,61 @@
         }
     </style>
     <script>
-        // Pre carregar os botões de interação
+        // Pre carregar os botões de interação em um array para manipulação de suas características
+        let btnGhost = []
+        let btnEvidence = []
+
+        // Variável definida para controlar as evidências selecionadas e os fantasmas que serão exibidos de acordo
+        let evidenceController = []
+
         window.addEventListener('DOMContentLoaded', () => {
+            // Carregando os elementos HTML em um Array de Objetos
+            btnGhost = Array.from(document.querySelectorAll('.Ghost'))
+            btnEvidence = Array.from(document.querySelectorAll('.Evidence'))
 
-            // Escanear os fantasmas
-            const fantasmas = Array.from(document.querySelectorAll('.Ghost'))
+            // Definindo as características do controlador
+            // Cada evidência possui três modos => não-selecionada: null, selecionada: true e inválida: false
+            evidenceController = Array.from(btnEvidence).map(element => ({
+                evidence: element.getAttribute('evidence'),
+                state: element.getAttribute('state')
+            }))
+            console.log(evidenceController)
+            // Verificando o conteúdo
+            /*
+            btnEvidence.forEach(function (elemento, indice) {
+                console.log('Estou na posição ' + indice + ' e este é o elemento: ' + elemento.innerText)
+            })
 
-            // Escanear as evidências
-            const evidencias = Array.from(document.querySelectorAll('.Evidence'))
-            //console.log(evidencias)
-            
-            for (let i = 0; i < evidencias.length; i++) {
-                console.log('Estou na posição ' + i + ' e este é o elemento: ' + evidencias[i].innerText)
-            }
-
-            
+            btnGhost.forEach(ghost => {
+                console.log(ghost)
+            })
+            */
         })
+
         
-        // função de direcionamento
-        function typeAction(btn) {
-            
+        // função de direcionamento após clicar em uma evidência
+        function typeEvidence(btn) {
+            let selectedEvidence = btn
+            //console.log('Selecionou ' + selectedEvidence.getAttribute('evidence'))
+            // Atribuição de evidências selecionadas
+            btnGhost.forEach(ghost => {
+                let evidencias = [
+                    ghost.getAttribute('ghostEvidence1'),
+                    ghost.getAttribute('ghostEvidence2'),
+                    ghost.getAttribute('ghostEvidence3')
+                ]
+                if (!evidencias.includes(selectedEvidence.getAttribute('evidence'))) {
+                    //console.log('a evidencia ' + selectedEvidence + ' não está presente no ' + ghost.innerText + ' pois ele possui: ' + evidencias[0] + ', ' + evidencias[1] + ', ' + evidencias[2])
+                    ghost.style.textDecoration = 'line-through'
+                }
+                selectedEvidence.style.border = '3px solid black'
+                selectedEvidence.setAttribute('state', true)
+                console.log(selectedEvidence.getAttribute('state'))
+            })
+        }
+
+        function typeGhost(btn) {
+            //console.log('Selecionou ' + btn.innerText)
         }
     </script>
 </head>
@@ -115,42 +150,42 @@
             <section class="evidencias">
                 <h2>Evidências</h2>
                 <ul>
-                    <li class="Evidence" onclick="typeAction(this)">EMF Nível 5</li>
-                    <li class="Evidence" onclick="typeAction(this)">Ultravioleta</li>
-                    <li class="Evidence" onclick="typeAction(this)">Escrita Fantasma</li>
-                    <li class="Evidence" onclick="typeAction(this)">Temperaturas Congelantes</li>
-                    <li class="Evidence" onclick="typeAction(this)">Projetor D.O.T.S.</li>
-                    <li class="Evidence" onclick="typeAction(this)">Orbe Espectral</li>
-                    <li class="Evidence" onclick="typeAction(this)">Spirit Box</li>
+                    <li class="Evidence" evidence="EMF5" state="null" onclick="typeEvidence(this)">EMF Nível 5</li>
+                    <li class="Evidence" evidence="UV" state="null" onclick="typeEvidence(this)">Ultravioleta</li>
+                    <li class="Evidence" evidence="ESCRITA" state="null" onclick="typeEvidence(this)">Escrita Fantasma</li>
+                    <li class="Evidence" evidence="TEMPERATURA" state="null" onclick="typeEvidence(this)">Temperaturas Congelantes</li>
+                    <li class="Evidence" evidence="DOTS" state="null" onclick="typeEvidence(this)">Projetor D.O.T.S.</li>
+                    <li class="Evidence" evidence="ORB" state="null" onclick="typeEvidence(this)">Orbe Espectral</li>
+                    <li class="Evidence" evidence="SPIRIT" state="null" onclick="typeEvidence(this)">Spirit Box</li>
                 </ul>
             </section>
             <section class="fantasmas">
                 <h3>Com as evidências que encontramos, acreditamos que o fantasma é</h3>
                 <ul>
-                    <li class="Ghost" onclick="typeAction(this)">Espírito</li>
-                    <li class="Ghost" onclick="typeAction(this)">Poltergeist</li>
-                    <li class="Ghost" onclick="typeAction(this)">Mare</li>
-                    <li class="Ghost" onclick="typeAction(this)">Demônio</li>
-                    <li class="Ghost" onclick="typeAction(this)">Yokai</li>
-                    <li class="Ghost" onclick="typeAction(this)">Myling</li>
-                    <li class="Ghost" onclick="typeAction(this)">Raiju</li>
-                    <li class="Ghost" onclick="typeAction(this)">Moroi</li>
-                    <li class="Ghost" onclick="typeAction(this)">Espectro</li>
-                    <li class="Ghost" onclick="typeAction(this)">Banshee</li>
-                    <li class="Ghost" onclick="typeAction(this)">Revenant</li>
-                    <li class="Ghost" onclick="typeAction(this)">Yurei</li>
-                    <li class="Ghost" onclick="typeAction(this)">Hantu</li>
-                    <li class="Ghost" onclick="typeAction(this)">Onryo</li>
-                    <li class="Ghost" onclick="typeAction(this)">Obake</li>
-                    <li class="Ghost" onclick="typeAction(this)">Deogen</li>
-                    <li class="Ghost" onclick="typeAction(this)">Aparição</li>
-                    <li class="Ghost" onclick="typeAction(this)">Jinn</li>
-                    <li class="Ghost" onclick="typeAction(this)">Sombra</li>
-                    <li class="Ghost" onclick="typeAction(this)">Oni</li>
-                    <li class="Ghost" onclick="typeAction(this)">Goryo</li>
-                    <li class="Ghost" onclick="typeAction(this)">Gêmeos</li>
-                    <li class="Ghost" onclick="typeAction(this)">Mímico</li>
-                    <li class="Ghost" onclick="typeAction(this)">Thaye</li>
+                    <li class="Ghost" ghostEvidence1="EMF5" ghostEvidence2="SPIRIT" ghostEvidence3="ESCRITA" onclick="typeGhost(this)">Espírito</li>
+                    <li class="Ghost" ghostEvidence1="SPIRIT" ghostEvidence2="UV" ghostEvidence3="ESCRITA" onclick="typeGhost(this)">Poltergeist</li>
+                    <li class="Ghost" ghostEvidence1="SPIRIT" ghostEvidence2="ORB" ghostEvidence3="ESCRITA" onclick="typeGhost(this)">Mare</li>
+                    <li class="Ghost" ghostEvidence1="UV" ghostEvidence2="ESCRITA" ghostEvidence3="TEMPERATURA" onclick="typeGhost(this)">Demônio</li>
+                    <li class="Ghost" ghostEvidence1="SPIRIT" ghostEvidence2="ORB" ghostEvidence3="DOTS" onclick="typeGhost(this)">Yokai</li>
+                    <li class="Ghost" ghostEvidence1="EMF5" ghostEvidence2="UV" ghostEvidence3="ESCRITA" onclick="typeGhost(this)">Myling</li>
+                    <li class="Ghost" ghostEvidence1="EMF5" ghostEvidence2="ORB" ghostEvidence3="DOTS" onclick="typeGhost(this)">Raiju</li>
+                    <li class="Ghost" ghostEvidence1="SPIRIT" ghostEvidence2="ESCRITA" ghostEvidence3="TEMPERATURA" onclick="typeGhost(this)">Moroi</li>
+                    <li class="Ghost" ghostEvidence1="EMF5" ghostEvidence2="SPIRIT" ghostEvidence3="DOTS" onclick="typeGhost(this)">Espectro</li>
+                    <li class="Ghost" ghostEvidence1="UV" ghostEvidence2="ORB" ghostEvidence3="DOTS" onclick="typeGhost(this)">Banshee</li>
+                    <li class="Ghost" ghostEvidence1="ORB" ghostEvidence2="ESCRITA" ghostEvidence3="TEMPERATURA" onclick="typeGhost(this)">Revenant</li>
+                    <li class="Ghost" ghostEvidence1="ORB" ghostEvidence2="TEMPERATURA" ghostEvidence3="DOTS" onclick="typeGhost(this)">Yurei</li>
+                    <li class="Ghost" ghostEvidence1="UV" ghostEvidence2="ORB" ghostEvidence3="TEMPERATURA" onclick="typeGhost(this)">Hantu</li>
+                    <li class="Ghost" ghostEvidence1="SPIRIT" ghostEvidence2="ORB" ghostEvidence3="TEMPERATURA" onclick="typeGhost(this)">Onryo</li>
+                    <li class="Ghost" ghostEvidence1="EMF5" ghostEvidence2="UV" ghostEvidence3="ORB" onclick="typeGhost(this)">Obake</li>
+                    <li class="Ghost" ghostEvidence1="SPIRIT" ghostEvidence2="ESCRITA" ghostEvidence3="DOTS" onclick="typeGhost(this)">Deogen</li>
+                    <li class="Ghost" ghostEvidence1="SPIRIT" ghostEvidence2="UV" ghostEvidence3="DOTS" onclick="typeGhost(this)">Aparição</li>
+                    <li class="Ghost" ghostEvidence1="EMF5" ghostEvidence2="UV" ghostEvidence3="TEMPERATURA" onclick="typeGhost(this)">Jinn</li>
+                    <li class="Ghost" ghostEvidence1="EMF5" ghostEvidence2="ESCRITA" ghostEvidence3="TEMPERATURA" onclick="typeGhost(this)">Sombra</li>
+                    <li class="Ghost" ghostEvidence1="EMF5" ghostEvidence2="TEMPERATURA" ghostEvidence3="DOTS" onclick="typeGhost(this)">Oni</li>
+                    <li class="Ghost" ghostEvidence1="EMF5" ghostEvidence2="UV" ghostEvidence3="DOTS" onclick="typeGhost(this)">Goryo</li>
+                    <li class="Ghost" ghostEvidence1="EMF5" ghostEvidence2="SPIRIT" ghostEvidence3="TEMPERATURA" onclick="typeGhost(this)">Gêmeos</li>
+                    <li class="Ghost" ghostEvidence1="SPIRIT" ghostEvidence2="UV" ghostEvidence3="TEMPERATURA" onclick="typeGhost(this)">Mímico</li>
+                    <li class="Ghost" ghostEvidence1="ORB" ghostEvidence2="ESCRITA" ghostEvidence3="DOTS" onclick="typeGhost(this)">Thaye</li>
                 </ul>
             </section>
         </section>
