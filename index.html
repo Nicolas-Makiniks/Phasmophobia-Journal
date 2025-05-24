@@ -89,57 +89,73 @@
         let btnGhost = []
         let btnEvidence = []
 
-        // Variável definida para controlar as evidências selecionadas e os fantasmas que serão exibidos de acordo
-        let evidenceController = []
-
         window.addEventListener('DOMContentLoaded', () => {
             // Carregando os elementos HTML em um Array de Objetos
             btnGhost = Array.from(document.querySelectorAll('.Ghost'))
             btnEvidence = Array.from(document.querySelectorAll('.Evidence'))
 
-            // Definindo as características do controlador
-            // Cada evidência possui três modos => não-selecionada: null, selecionada: true e inválida: false
-            evidenceController = Array.from(btnEvidence).map(element => ({
-                evidence: element.getAttribute('evidence'),
-                state: element.getAttribute('state')
-            }))
-            console.log(evidenceController)
             // Verificando o conteúdo
             /*
             btnEvidence.forEach(function (elemento, indice) {
-                console.log('Estou na posição ' + indice + ' e este é o elemento: ' + elemento.innerText)
+            console.log('Estou na posição ' + indice + ' e este é o elemento: ' + elemento.innerText)
             })
-
+            
             btnGhost.forEach(ghost => {
-                console.log(ghost)
+            console.log(ghost)
             })
             */
-        })
-
-        
+         })
+            
+            
         // função de direcionamento após clicar em uma evidência
-        function typeEvidence(btn) {
-            let selectedEvidence = btn
-            //console.log('Selecionou ' + selectedEvidence.getAttribute('evidence'))
-            // Atribuição de evidências selecionadas
+        function typeEvidence(selectedEvidence) {
+            console.log('Selecionou ' + selectedEvidence.getAttribute('evidence'))
+            updateEvidence(selectedEvidence)
+            updateTable(selectedEvidence)
+        }
+        
+        function typeGhost(btn) {
+            //console.log('Selecionou ' + btn.innerText)
+        }
+        
+        // Atribuição das evidências selecionadas
+        // Cada evidência possui três modos => não-selecionada: null, selecionada: true e inválida: false
+        function updateEvidence(selectedEvidence) {
+            if (selectedEvidence.getAttribute('state') === 'null') {
+                selectedEvidence.setAttribute('state', true)
+                selectedEvidence.style.border = '3px solid black'
+
+                console.log(selectedEvidence.getAttribute('evidence') + ' foi definido para ' + selectedEvidence.getAttribute('state'))
+            } else if (selectedEvidence.getAttribute('state') === 'true') {
+                selectedEvidence.setAttribute('state', false)
+                selectedEvidence.style.border = ''
+                selectedEvidence.style.textDecoration = 'line-through'
+
+                console.log(selectedEvidence.getAttribute('evidence') + ' foi definido para ' + selectedEvidence.getAttribute('state'))
+            } else {
+                selectedEvidence.style.textDecoration = ''
+                selectedEvidence.setAttribute('state', null)
+
+                console.log(selectedEvidence.getAttribute('evidence') + ' foi definido para ' + selectedEvidence.getAttribute('state'))
+            }
+        }
+        
+        function updateTable(selectedEvidence) {
             btnGhost.forEach(ghost => {
                 let evidencias = [
                     ghost.getAttribute('ghostEvidence1'),
                     ghost.getAttribute('ghostEvidence2'),
                     ghost.getAttribute('ghostEvidence3')
                 ]
+                /*
                 if (!evidencias.includes(selectedEvidence.getAttribute('evidence'))) {
-                    //console.log('a evidencia ' + selectedEvidence + ' não está presente no ' + ghost.innerText + ' pois ele possui: ' + evidencias[0] + ', ' + evidencias[1] + ', ' + evidencias[2])
+                    console.log('a evidencia ' + selectedEvidence + ' não está presente no ' + ghost.innerText + ' pois ele possui: ' + evidencias[0] + ', ' + evidencias[1] + ', ' + evidencias[2])
                     ghost.style.textDecoration = 'line-through'
                 }
-                selectedEvidence.style.border = '3px solid black'
-                selectedEvidence.setAttribute('state', true)
-                console.log(selectedEvidence.getAttribute('state'))
+                */
+                
             })
-        }
-
-        function typeGhost(btn) {
-            //console.log('Selecionou ' + btn.innerText)
+            console.log('Atualizando a tabela...')
         }
     </script>
 </head>
