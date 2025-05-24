@@ -85,31 +85,26 @@
         }
     </style>
     <script>
-        let evidencias = [0, 0, 0, 0, 0, 0, 0] //Representação numérica de EMF, UV, ESCRITA, TEMP, DOTS e ORB em que 0 é padrão, 1 é válido e 2 inválido para ter 3 comportamentos
-        let fantasmas = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] //Representação numérica dos fantasmas listados
+        // Pre carregar os botões de interação
+        window.addEventListener('DOMContentLoaded', () => {
 
-        function getTypeAction(btn) {
-            let selectedButton = btn
+            // Escanear os fantasmas
+            const fantasmas = Array.from(document.querySelectorAll('.Ghost'))
+
+            // Escanear as evidências
+            const evidencias = Array.from(document.querySelectorAll('.Evidence'))
+            //console.log(evidencias)
             
-            if (selectedButton.className === "Evidence") {
-
-                if (evidencias[selectedButton.id] === 0) {
-                    evidencias[selectedButton.id] = 1
-                    selectedButton.style.border = '3px solid black'
-                } else if (evidencias[selectedButton.id] === 1) {
-                    evidencias[selectedButton.id] = 2
-                    selectedButton.style.textDecoration = 'line-through'
-                    selectedButton.style.border = ''
-                } else {
-                    evidencias[selectedButton.id] = 0
-                    selectedButton.style = ''
-                }
-            } else if (selectedButton.className === 'Ghost') {
-                console.log('é ghost')
-                if (fantasmas[selectedButton.id] === 0) {
-                    fantas
-                }
+            for (let i = 0; i < evidencias.length; i++) {
+                console.log('Estou na posição ' + i + ' e este é o elemento: ' + evidencias[i].innerText)
             }
+
+            
+        })
+        
+        // função de direcionamento
+        function typeAction(btn) {
+            
         }
     </script>
 </head>
@@ -120,42 +115,42 @@
             <section class="evidencias">
                 <h2>Evidências</h2>
                 <ul>
-                    <li id="0" class="Evidence" onclick="getTypeAction(this)">EMF Nível 5</li>
-                    <li id="1" class="Evidence" onclick="getTypeAction(this)">Ultravioleta</li>
-                    <li id="2" class="Evidence" onclick="getTypeAction(this)">Escrita Fantasma</li>
-                    <li id="3" class="Evidence" onclick="getTypeAction(this)">Temperaturas Congelantes</li>
-                    <li id="4" class="Evidence" onclick="getTypeAction(this)">Projetor D.O.T.S.</li>
-                    <li id="5" class="Evidence" onclick="getTypeAction(this)">Orbe Espectral</li>
-                    <li id="6" class="Evidence" onclick="getTypeAction(this)">Spirit Box</li>
+                    <li class="Evidence" onclick="typeAction(this)">EMF Nível 5</li>
+                    <li class="Evidence" onclick="typeAction(this)">Ultravioleta</li>
+                    <li class="Evidence" onclick="typeAction(this)">Escrita Fantasma</li>
+                    <li class="Evidence" onclick="typeAction(this)">Temperaturas Congelantes</li>
+                    <li class="Evidence" onclick="typeAction(this)">Projetor D.O.T.S.</li>
+                    <li class="Evidence" onclick="typeAction(this)">Orbe Espectral</li>
+                    <li class="Evidence" onclick="typeAction(this)">Spirit Box</li>
                 </ul>
             </section>
             <section class="fantasmas">
                 <h3>Com as evidências que encontramos, acreditamos que o fantasma é</h3>
                 <ul>
-                    <li id="0" class="Ghost" onclick="getTypeAction(this)">Espírito</li>
-                    <li id="1" class="Ghost" onclick="getTypeAction(this)">Poltergeist</li>
-                    <li id="2" class="Ghost" onclick="getTypeAction(this)">Mare</li>
-                    <li id="3" class="Ghost" onclick="getTypeAction(this)">Demônio</li>
-                    <li id="4" class="Ghost" onclick="getTypeAction(this)">Yokai</li>
-                    <li id="5" class="Ghost" onclick="getTypeAction(this)">Myling</li>
-                    <li id="6" class="Ghost" onclick="getTypeAction(this)">Raiju</li>
-                    <li id="7" class="Ghost" onclick="getTypeAction(this)">Moroi</li>
-                    <li id="8" class="Ghost" onclick="getTypeAction(this)">Espectro</li>
-                    <li id="9" class="Ghost" onclick="getTypeAction(this)">Banshee</li>
-                    <li id="10" class="Ghost" onclick="getTypeAction(this)">Revenant</li>
-                    <li id="11" class="Ghost" onclick="getTypeAction(this)">Yurei</li>
-                    <li id="12" class="Ghost" onclick="getTypeAction(this)">Hantu</li>
-                    <li id="13" class="Ghost" onclick="getTypeAction(this)">Onryo</li>
-                    <li id="14" class="Ghost" onclick="getTypeAction(this)">Obake</li>
-                    <li id="15" class="Ghost" onclick="getTypeAction(this)">Deogen</li>
-                    <li id="16" class="Ghost" onclick="getTypeAction(this)">Aparição</li>
-                    <li id="17" class="Ghost" onclick="getTypeAction(this)">Jinn</li>
-                    <li id="18" class="Ghost" onclick="getTypeAction(this)">Sombra</li>
-                    <li id="19" class="Ghost" onclick="getTypeAction(this)">Oni</li>
-                    <li id="20" class="Ghost" onclick="getTypeAction(this)">Goryo</li>
-                    <li id="21" class="Ghost" onclick="getTypeAction(this)">Gêmeos</li>
-                    <li id="22" class="Ghost" onclick="getTypeAction(this)">Mímico</li>
-                    <li id="23" class="Ghost" onclick="getTypeAction(this)">Thaye</li>
+                    <li class="Ghost" onclick="typeAction(this)">Espírito</li>
+                    <li class="Ghost" onclick="typeAction(this)">Poltergeist</li>
+                    <li class="Ghost" onclick="typeAction(this)">Mare</li>
+                    <li class="Ghost" onclick="typeAction(this)">Demônio</li>
+                    <li class="Ghost" onclick="typeAction(this)">Yokai</li>
+                    <li class="Ghost" onclick="typeAction(this)">Myling</li>
+                    <li class="Ghost" onclick="typeAction(this)">Raiju</li>
+                    <li class="Ghost" onclick="typeAction(this)">Moroi</li>
+                    <li class="Ghost" onclick="typeAction(this)">Espectro</li>
+                    <li class="Ghost" onclick="typeAction(this)">Banshee</li>
+                    <li class="Ghost" onclick="typeAction(this)">Revenant</li>
+                    <li class="Ghost" onclick="typeAction(this)">Yurei</li>
+                    <li class="Ghost" onclick="typeAction(this)">Hantu</li>
+                    <li class="Ghost" onclick="typeAction(this)">Onryo</li>
+                    <li class="Ghost" onclick="typeAction(this)">Obake</li>
+                    <li class="Ghost" onclick="typeAction(this)">Deogen</li>
+                    <li class="Ghost" onclick="typeAction(this)">Aparição</li>
+                    <li class="Ghost" onclick="typeAction(this)">Jinn</li>
+                    <li class="Ghost" onclick="typeAction(this)">Sombra</li>
+                    <li class="Ghost" onclick="typeAction(this)">Oni</li>
+                    <li class="Ghost" onclick="typeAction(this)">Goryo</li>
+                    <li class="Ghost" onclick="typeAction(this)">Gêmeos</li>
+                    <li class="Ghost" onclick="typeAction(this)">Mímico</li>
+                    <li class="Ghost" onclick="typeAction(this)">Thaye</li>
                 </ul>
             </section>
         </section>
