@@ -27,12 +27,19 @@
             main {
                 display: flex;
                 height: 90vh;
+                background-color: rgb(180, 109, 81);
             }
 
             /* Seção da Esquerda */
             .secaoEsquerda {
                 width: 100px;
-                background-color: lightcoral;
+                background: linear-gradient(0.25turn, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)), url(img/leftSide.png);
+                background-position: right;
+                background-repeat: no-repeat;
+            }
+
+            .secaoEsquerda:hover {
+                background-image: url(img/leftSide.png);
             }
 
             /* Seção da Direita */
@@ -40,14 +47,11 @@
                 display: flex;
                 flex-direction: column;
                 flex-grow: 1;
-                background-color: blueviolet;
                 overflow: hidden;
                 padding: 10px;
-            }
-            
-            /* Componentes da Direita */
-            .evidencias {
-                background-color: lightblue;
+                background-image: url(img/rightSide.png);
+                background-position: left;
+                background-repeat: no-repeat;
             }
             
             /* Aqui estou tratando do layout como se fosse uma tabela interativa, as ações serão feitas em JS */
@@ -75,7 +79,6 @@
             
             /* Aqui estou tratando do layout dos resultados conforme a seleção da tabela acima */
             .fantasmas {
-                background-color: lightgreen;
                 flex-grow: 1;
                 text-align: center;
                 padding-top: 10px;
